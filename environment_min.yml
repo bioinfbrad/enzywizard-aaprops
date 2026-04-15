@@ -1,0 +1,10 @@
+name: enzywizard-aaprops
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - dssp=4.6.0
+  - numpy=1.23.5
+  - biopython=1.86
+prefix: /home/wmk/miniconda3/envs/enzywizard-aaprops
