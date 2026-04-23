@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/1219034917.svg)](https://doi.org/10.5281/zenodo.19709366)
 
 # EnzyWizard-AAprops
 
