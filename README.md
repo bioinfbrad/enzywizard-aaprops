@@ -59,7 +59,6 @@ The program outputs the following file into the output directory:
 
      - "residue_name"
        - Data type: string
-       - Pattern: "^[ACDEFGHIKLMNPQRSTVWY]$"
        - Description: The field 'residue_name' indicates the name ('name': http://xmlns.com/foaf/0.1/name) of the residue ('residue': http://purl.obolibrary.org/obo/GENO_0000782), using one-letter code ('one-letter code': https://iupac.qmul.ac.uk/AminoAcid/A2021.html) to represent the amino acid residue.
 
      - "residue_name_one_hot_encoding"
@@ -70,7 +69,6 @@ The program outputs the following file into the output directory:
 
      - "residue_chemical_classification"
        - Data type: string
-       - Pattern: "^(uncharged_polar|positively_charged|negatively_charged|hydrophobic|aromatic|aliphatic|heterocyclic|sulfur_containing)(/(uncharged_polar|positively_charged|negatively_charged|hydrophobic|aromatic|aliphatic|heterocyclic|sulfur_containing))*$"
        - Description: The field 'residue_chemical_classification' indicates the chemical classification ('classification': http://purl.obolibrary.org/obo/NCIT_C25161) of the residue ('residue': http://purl.obolibrary.org/obo/GENO_0000782).
 
      - "residue_chemical_classification_one_hot_encoding"
