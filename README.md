@@ -79,7 +79,6 @@ The program outputs the following file into the output directory:
 
      - "residue_secondary_structure"
        - Data type: string
-       - Enum: ["-", "H", "B", "E", "G", "I", "T", "S"]
        - Description: The field 'residue_secondary_structure' indicates the secondary structure ('secondary structure': http://edamontology.org/operation_1847) assigned to the residue ('residue': http://purl.obolibrary.org/obo/GENO_0000782), using DSSP secondary-structure codes ('DSSP': https://manual.gromacs.org/current/onlinehelp/gmx-dssp.html).
 
      - "residue_secondary_structure_one_hot_encoding"
