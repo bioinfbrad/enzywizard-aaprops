@@ -32,7 +32,6 @@ def get_dssp_fields(dssp: DSSP, dssp_key: Tuple[str, Tuple[str, int, str]], logg
 def postprocess_aaprops_report_to_schema(raw_report: Dict[str, Any]) -> Dict[str, Any]:
     """
     Map the original EnzyWizard-Aaprops raw report to the new schema-compliant report.
-
     """
 
     aa_name_count_field_map: Dict[str, str] = {
@@ -113,22 +112,25 @@ def postprocess_aaprops_report_to_schema(raw_report: Dict[str, Any]) -> Dict[str
         )
 
     residue_name_statistics = {
-        schema_field_name: int(raw_aa_name_statistics.get(raw_field_name, 0))
+        schema_field_name: raw_aa_name_statistics[raw_field_name]
         for raw_field_name, schema_field_name in aa_name_count_field_map.items()
+        if raw_field_name in raw_aa_name_statistics
     }
 
     residue_chemical_classification_statistics = {
-        schema_field_name: int(raw_aa_class_statistics.get(raw_field_name, 0))
+        schema_field_name: raw_aa_class_statistics[raw_field_name]
         for raw_field_name, schema_field_name in aa_class_count_field_map.items()
+        if raw_field_name in raw_aa_class_statistics
     }
 
     residue_secondary_structure_statistics = {
-        schema_field_name: int(raw_aa_ss_statistics.get(raw_field_name, 0))
+        schema_field_name: raw_aa_ss_statistics[raw_field_name]
         for raw_field_name, schema_field_name in aa_ss_count_field_map.items()
+        if raw_field_name in raw_aa_ss_statistics
     }
 
     return {
-        "report_type": raw_report.get("output_type", "enzywizard_aaprops"),
+        "report_type": raw_report.get("output_type"),
         "amino_acid_residue_properties": amino_acid_residue_properties,
         "residue_properties_statistics": {
             "residue_name_statistics": residue_name_statistics,
