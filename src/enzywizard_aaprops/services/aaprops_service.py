@@ -37,21 +37,25 @@ def run_aaprops_service(input_path: str | Path, output_dir: str | Path) ->bool:
 
     #---- check structure ----
     if not check_cleaned_structure(structure, logger):
+        logger.print("[ERROR] Cleaned structure validation failed")
         return False
     logger.print(f"[INFO] Structure checked")
 
     #---- load dssp ----
     dssp=load_dssp(structure,logger)
     if dssp is None:
+        logger.print("[ERROR] Failed to load DSSP")
         return False
 
     # ---- run algorithm ----
     logger.print("[INFO] Calculating amino acid properties started")
     aa_props=calculate_aa_props(structure,dssp,logger)
     if aa_props is None:
+        logger.print("[ERROR] Failed to calculate amino acid properties")
         return False
     aa_props_statistics=calculate_aa_props_statistics(aa_props,logger)
     if aa_props_statistics is None:
+        logger.print("[ERROR] Failed to calculate amino acid property statistics")
         return False
 
     json_report_path = output_dir / get_optimized_filename(f"aaprops_report_{name}.json")
@@ -63,4 +67,3 @@ def run_aaprops_service(input_path: str | Path, output_dir: str | Path) ->bool:
     logger.print("[INFO] Aaprops processing finished")
 
     return True
-

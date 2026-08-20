@@ -23,8 +23,8 @@ def get_dssp_fields(dssp: DSSP, dssp_key: Tuple[str, Tuple[str, int, str]], logg
 
     try:
         return ss, float(rsa), float(phi), float(psi)
-    except (TypeError, ValueError):
-        logger.print(f"[ERROR] Invalid DSSP numeric values at {dssp_key}: rsa={rsa}, phi={phi}, psi={psi}")
+    except (TypeError, ValueError) as e:
+        logger.print(f"[ERROR] Invalid DSSP numeric values at {dssp_key}: rsa={rsa}, phi={phi}, psi={psi}: {e}")
         return None
 
 
@@ -95,7 +95,7 @@ def postprocess_aaprops_report_to_schema(raw_report: Dict[str, Any]) -> Dict[str
                 "residue_name": raw_residue_property.get("aa_name"),
                 "residue_name_one_hot_encoding": raw_residue_property.get("aa_name_one_hot"),
                 "residue_chemical_classification": raw_residue_property.get("aa_class"),
-                "residue_chemical_classification_one_hot_encoding": raw_residue_property.get("aa_class_one_hot"),
+                "residue_chemical_classification_multi_hot_encoding": raw_residue_property.get("aa_class_one_hot"),
                 "residue_secondary_structure": raw_residue_property.get("aa_ss"),
                 "residue_secondary_structure_one_hot_encoding": raw_residue_property.get("aa_ss_one_hot"),
                 "residue_relative_solvent_accessibility": raw_residue_property.get("aa_rsa"),

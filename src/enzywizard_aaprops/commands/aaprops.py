@@ -1,5 +1,6 @@
 from __future__ import annotations
 from argparse import Namespace, ArgumentParser
+import sys
 from ..services.aaprops_service import run_aaprops_service
 
 def add_aaprops_parser(parser: ArgumentParser) -> None:
@@ -8,5 +9,6 @@ def add_aaprops_parser(parser: ArgumentParser) -> None:
     parser.set_defaults(func=run_aaprops)
 
 def run_aaprops(args: Namespace) -> None:
-    run_aaprops_service(input_path=args.input_path, output_dir=args.output_dir)
-
+    success = run_aaprops_service(input_path=args.input_path, output_dir=args.output_dir)
+    if not success:
+        sys.exit(1)
