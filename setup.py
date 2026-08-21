@@ -26,7 +26,7 @@ setup(
     python_requires=">=3.10",
     install_requires=[
         "biopython>=1.86",          # for structure parsing, DSSP
-        "numpy>=1.23.5",            # for numerical operations (one‑hot encoding, etc.)
+        "numpy>=1.23.5,<2",         # for numerical operations (one‑hot encoding, etc.)
         # packaging is not used in the code, so omitted.
     ],
     entry_points={
